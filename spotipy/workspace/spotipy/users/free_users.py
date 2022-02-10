@@ -6,8 +6,8 @@ from workspace.spotipy.users.all_users import AllUsers
 
 
 class FreeUsers(AllUsers):
-    def __init__(self, user_name, password):
-        AllUsers.__init__(user_name, password)
+    def __init__(self, user_name, password, user_id):
+        AllUsers.__init__(user_name, password, user_id)
         self.config = Configuration()
 
     def add_playlist(self, new_playlist: Playlist):

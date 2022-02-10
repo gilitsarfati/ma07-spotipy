@@ -22,8 +22,7 @@ class Search:
         return albums
 
     def by_popularity(self):
-        for song in self.all_songs:
-            return song["track"]["popularity"]
+        return self["track"]["popularity"]
 
     def sort_by_popularity(self, singer_id):
         songs_by_singer = []
@@ -31,7 +30,7 @@ class Search:
             for singer in song["track"]["artists"]:
                 if singer["id"] == singer_id:
                     songs_by_singer.append(song)
-        songs_by_singer.sort(reverse=True, key=songs_by_singer["track"]["popularity"])
+        songs_by_singer.sort(key=self.by_popularity)
         return songs_by_singer
 
     def most_popular(self, singer_id):
@@ -50,4 +49,4 @@ class Search:
 
 
 search = Search()
-print(search.songs_in_album("5DvWThv9KXSsyZPDyozM49"))
+print(search.all_singers())

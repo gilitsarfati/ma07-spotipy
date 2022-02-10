@@ -1,11 +1,15 @@
+from typing import List
+
 from workspace.spotipy.music.playlists import Playlist
+from workspace.spotipy.searching.search import Search
 
 
 class AllUsers:
-    def __init__(self, user_name, password):
+    def __init__(self, user_name, password, user_id):
         self.user_name = user_name
         self.password = password
-        self.playlists: list[Playlist] = []
+        self.user_id = user_id
+        self.playlists: List[Playlist] = []
 
     def if_token(self, new_playlist: Playlist):
         for playlist in self.playlists:
@@ -18,3 +22,4 @@ class AllUsers:
             self.playlists.append(new_playlist)
         else:
             print("this name is already token!")
+
